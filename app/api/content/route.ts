@@ -1,4 +1,6 @@
 import { NextResponse } from "next/server";
+import { getServerSession } from "next-auth";
+
 const posts = [
   {
     title: "Lorem Ipsum",
@@ -56,5 +58,7 @@ const posts = [
 ];
 
 export async function GET() {
+  const session = await getServerSession();
+
   return NextResponse.json(posts);
 }
